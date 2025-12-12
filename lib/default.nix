@@ -12,8 +12,7 @@ rec {
 
   # Most popular extra dependencies for the rust cross-compilation.
   rustBuildHostDependencies = prev.callPackage
-    ({ darwin
-     , cacert
+    ({ cacert
      , lib
      , libiconv
      }:
@@ -79,8 +78,8 @@ rec {
     let
       extraRustcFlags = lib.optionalString isCross
         (
-          "--remap-path-prefix=$HOME=/home/cprc"
-          + " --remap-path-prefix=$PWD=/home/cprc"
+          "--remap-path-prefix=$HOME=/home/nixpkgs-cross-overlay"
+          + " --remap-path-prefix=$PWD=/home/nixpkgs-cross-overlay"
         );
     in
     ''
