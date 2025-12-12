@@ -5,7 +5,6 @@ in
 { localSystem ? builtins.currentSystem
 , crossSystem ? null
 , src ? lockFile.nixpkgs
-, newSrc ? lockFile.nixpkgs-25-05
 , config ? { }
 , overlays ? [ ]
 }:
@@ -18,7 +17,7 @@ let
       # Setup cross overlay.
       (final: prev: {
         # get fresh rdkafka
-        rdkafka = import newSrc {
+        rdkafka = import src {
           inherit localSystem config;
         }.rdkafka;
       })
