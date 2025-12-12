@@ -27,7 +27,7 @@ let
 in
 # Make cross system packages.
 pkgs.mkCrossPkgs {
-  inherit src newSrc localSystem crossSystem config;
+  inherit src localSystem crossSystem config;
   # Setup extra overlays.
   overlays = [
     (import lockFile.rust-overlay)
