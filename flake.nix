@@ -17,7 +17,6 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-25-05
     , rust-overlay
     , flake-utils
     , treefmt-nix
@@ -33,7 +32,7 @@
             (import ./.)
             (final: prev: {
               # get fresh rdkafka
-              rdkafka = builtins.trace ''overlaying rdkafka'' import nixpkgs-25-05 {
+              rdkafka = builtins.trace ''overlaying rdkafka'' import nixpkgs {
                 inherit system;
               }.rdkafka;
             })
